@@ -1,0 +1,46 @@
+.textMessageContainer {
+    padding: 10px 20px;
+    border: 1px solid black;
+    max-width: calc(100% - 50%);
+    width: fit-content;
+    border-radius: 10px 0px 10px 10px;
+    background: rgb(81, 81, 213);
+    background: linear-gradient(197deg, rgba(81, 81, 213, 1) 46%, rgba(0, 212, 255, 1) 100%);
+    margin-bottom: 40px;
+    clear: both;
+}
+
+.textMessageContainer p {
+    overflow-wrap: break-word
+}
+
+.receivedText {
+    border-radius: 0px 10px 10px 10px;
+}
+
+.sentText {
+    float: right;
+}
+
+.contactTextMessage {
+    margin-top: 100px;
+    margin-bottom: 60px;
+}
+
+.timeStamp {
+    margin-top: 5px;
+}
+
+.sentText .timeStamp {
+    font-size: 8px;
+    text-align: right;
+}
+
+.receivedText .timeStamp {
+    font-size: 8px;
+    text-align: left;
+}
+
+.textMessageContainer img {
+    height: 150px;
+}

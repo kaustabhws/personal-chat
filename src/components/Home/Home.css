@@ -1,0 +1,40 @@
+.chatboxContainer {
+    display: flex;
+    height: 100vh;
+}
+
+.sidebarContainer {
+    flex: 1;
+    overflow-y: scroll;
+}
+
+.sidebarContainer::-webkit-scrollbar {
+    width: 5px;
+}
+
+.sidebarContainer.sidebarContainer::-webkit-scrollbar-track {
+    background-color: #666;
+}
+
+.sidebarContainer::-webkit-scrollbar-thumb {
+    background: #fff;
+    border-radius: 20px;
+}
+
+.chatContainer {
+    flex: 2;
+    overflow-y: scroll;
+}
+
+.chatContainer::-webkit-scrollbar {
+    width: 5px;
+}
+
+.chatContainer.chatContainer::-webkit-scrollbar-track {
+    background-color: #666;
+}
+
+.chatContainer::-webkit-scrollbar-thumb {
+    background: #fff;
+    border-radius: 20px;
+}

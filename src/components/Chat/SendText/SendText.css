@@ -1,0 +1,52 @@
+.messageInput {
+    position: absolute;
+    z-index: 5;
+    bottom: 0;
+    width: -webkit-fill-available;
+}
+
+.messageForm {
+    display: flex;
+    justify-content: center;
+}
+
+.messageInput .messageForm input {
+    min-height: 30px;
+    width: 80%;
+    padding: 10px 35px;
+    border: 0;
+    outline: 0;
+    border-radius: 10px;
+    background-color: #171d2b;
+    margin-bottom: 10px;
+    color: white;
+    font-size: 15px;
+}
+
+.messageInput .messageForm input::placeholder {
+    color: #ccc;
+}
+
+.messageInput .messageForm .fa-plus {
+    position: relative;
+    z-index: 5;
+    left: 28px;
+    top: 13px;
+    color: white;
+}
+
+.messageInput .messageForm .fa-paper-plane {
+    position: relative;
+    z-index: 5;
+    right: 30px;
+    top: 17px;
+    color: white;
+}
+
+.messageInput .messageForm .fa-face-smile {
+    position: relative;
+    z-index: 5;
+    right: 75px;
+    top: 17px;
+    color: white;
+}

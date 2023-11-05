@@ -1,0 +1,43 @@
+.chatPreviewContainer {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+.previewBoxes {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.previewBox {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background-color: #171d2b;
+    border-radius: 20px;
+    transition: all 0.4s;
+}
+
+.previewBox img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.previewBox .textInfo h3 {
+    font-size: 16px;
+    color: white;
+}
+
+.previewBox .textInfo p {
+    font-size: 12px;
+    color: #ccc;
+}
+
+.previewBox:hover {
+    background-color: rgb(104, 104, 251);
+}

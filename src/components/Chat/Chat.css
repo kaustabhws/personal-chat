@@ -1,0 +1,52 @@
+.chatsContainer {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #1a2030;
+    overflow: hidden;
+}
+
+#receivers {
+    position: fixed;
+    width: -webkit-fill-available;
+    background: #171d2b;
+    padding: 20px 30px;
+}
+
+.receiverInfo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.receiverInfo img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.receiverInfo h3 {
+    color: white;
+}
+
+.moreButtons i {
+    color: white;
+}
+
+.receiverDetails {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.moreButtons {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.messages {
+    color: white;
+    padding: 25px;
+}
