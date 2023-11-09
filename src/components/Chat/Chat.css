@@ -11,6 +11,7 @@
     width: -webkit-fill-available;
     background: #171d2b;
     padding: 20px 30px;
+    top: 0;
 }
 
 .receiverInfo {
@@ -49,4 +50,17 @@
 .messages {
     color: white;
     padding: 25px;
+}
+
+.userNotAvailable {
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.userNotAvailable p {
+    font-size: 25px;
+    font-weight: bold;
 }

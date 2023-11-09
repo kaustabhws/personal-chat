@@ -16,6 +16,9 @@ const SendText = () => {
     const { data } = useContext(ChatContext)
 
     const handleSend = async () => {
+        if(!text) {
+            return;
+        }
         if (img) {
             const storageRef = ref(storage, uuid());
 
@@ -66,10 +69,10 @@ const SendText = () => {
         <div className='messageInput'>
             <div className="messageForm">
                 <input type="file" id='image' style={{ display: 'none' }} onChange={e => setImg(e.target.files[0])} />
-                <label htmlFor='image'><i class="fa-solid fa-plus"></i></label>
+                <label htmlFor='image'><i className="fa-solid fa-plus"></i></label>
                 <input type="text" placeholder='Type message' autoFocus onChange={e => setText(e.target.value)} value={text} />
-                <i class="fa-solid fa-paper-plane" onClick={handleSend}></i>
-                <i class="fa-regular fa-face-smile"></i>
+                <i className="fa-solid fa-paper-plane" onClick={handleSend}></i>
+                <i className="fa-regular fa-face-smile"></i>
             </div>
         </div>
     )

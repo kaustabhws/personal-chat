@@ -70,14 +70,14 @@ const Login = () => {
                 pauseOnHover
                 theme="light"
             />
-            <div class='login-box'>
+            <div className='login-box'>
                 <h2>Login</h2>
                 <form onSubmit={handleSubmit}>
-                    <div class='user-box'>
+                    <div className='user-box'>
                         <input type='email' name='' required='' />
                         <label>Email</label>
                     </div>
-                    <div class='user-box'>
+                    <div className='user-box'>
                         <input type='password' name='' required='' />
                         <label>Password</label>
                     </div>

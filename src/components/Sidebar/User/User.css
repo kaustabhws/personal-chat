@@ -26,8 +26,11 @@
     border-radius: 50%;
 }
 
-.userInfo h2 {
-    overflow-wrap: break-word;
+@media (max-width: 1250px) {
+    .userInfo h2 {
+        max-width: 150px;
+        overflow-wrap: break-word;
+    }
 }
 
 .Btn {
@@ -62,36 +65,18 @@
     fill: white;
 }
 
-.text {
-    position: absolute;
-    right: 0%;
-    width: 0%;
-    opacity: 0;
-    color: white;
-    font-size: 1.2em;
-    font-weight: 600;
-    transition-duration: .3s;
-}
-
-.Btn:hover {
-    width: 125px;
-    border-radius: 40px;
-    transition-duration: .3s;
-}
-
-.Btn:hover .sign {
-    width: 30%;
-    transition-duration: .3s;
-    padding-left: 20px;
-}
-
-.Btn:hover .text {
-    opacity: 1;
-    width: 55%;
-    transition-duration: .3s;
-    padding-right: 10px;
-}
-
 .Btn:active {
     transform: translate(2px, 2px);
+}
+
+@media (max-width: 980px) {
+    .profileContainer {
+        padding: 20px 2px;
+    }
+}
+
+@media (max-width: 700px) {
+    .userInfo {
+        flex-direction: column;
+    }
 }

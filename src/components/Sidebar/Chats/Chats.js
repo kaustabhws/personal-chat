@@ -11,6 +11,7 @@ const Messages = () => {
     const { dispatch } = useContext(ChatContext)
 
     const [chats, setChats] = useState([])
+    const [selectedChat, setSelectedChat] = useState(null)
 
     useEffect(() => {
         const getChats = () => {
@@ -30,11 +31,16 @@ const Messages = () => {
         dispatch({ type: "CHANGE_USER", payload: u })
     }
 
+    const handlePreviewBoxClick = (chatId, userInfo) => {
+        setSelectedChat(chatId);
+        handleUserSelect(userInfo);
+    };
+
     return (
         <div className='chatPreviewContainer'>
             <div className="previewBoxes">
                 {chats && Object.entries(chats)?.sort((x,y)=>y[1].date - x[1].date).map((chat) => (
-                    <div className="previewBox" key={chat[0]} onClick={() => handleUserSelect(chat[1].userInfo)}>
+                    <div className={`previewBox ${selectedChat === chat[0] ? "selected" : ""}`} key={chat[0]} onClick={() => handlePreviewBoxClick(chat[0], chat[1].userInfo)}>
                         <img src={chat[1].userInfo.photoURL} alt="" />
                         <div className="textInfo">
                             <h3>{chat[1].userInfo.displayName}</h3>

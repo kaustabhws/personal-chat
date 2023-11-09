@@ -19,6 +19,7 @@
     background-color: #171d2b;
     border-radius: 20px;
     transition: all 0.4s;
+    cursor: pointer;
 }
 
 .previewBox img {
@@ -28,16 +29,36 @@
     object-fit: cover;
 }
 
+.previewBox .textInfo {
+    max-width: 150px;
+}
+
 .previewBox .textInfo h3 {
+    overflow-wrap: break-word;
     font-size: 16px;
     color: white;
 }
 
 .previewBox .textInfo p {
+    overflow-wrap: break-word;
     font-size: 12px;
     color: #ccc;
 }
 
 .previewBox:hover {
     background-color: rgb(104, 104, 251);
+}
+
+.previewBox.selected {
+    background-color: rgb(104, 104, 251);
+}
+
+@media (max-width: 592px ) {
+    .previewBox {
+        flex-direction: column;
+    }
+
+    .textInfo {
+        text-align: center;
+    }
 }
