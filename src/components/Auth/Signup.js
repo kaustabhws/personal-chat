@@ -9,10 +9,8 @@ import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { doc, setDoc } from "firebase/firestore";
 
 const Signup = () => {
-
     const [passwordVisible, setPasswordVisible] = useState(false);
     const [cpasswordVisible, setCPasswordVisible] = useState(false);
-
     const navigate = useNavigate();
 
     const handleTogglePasswordVisibility = (field) => {
@@ -25,74 +23,60 @@ const Signup = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const displayName = e.target[0].value;
-        const email = e.target[1].value;
-        const password = e.target[2].value;
-        const cpassword = e.target[3].value;
-        const file = e.target[4].files[0];
-
-        if (password.length < 6) {
-            toast.warn('Password must be at least 6 characters', {
-                position: "top-center",
-                autoClose: 3000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark",
-            });
-            return;
-        }
-
-        if (password !== cpassword) {
-            toast.warn('Password do not match', {
-                position: "top-center",
-                autoClose: 3000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark",
-            });
-            return;
-        }
+        const displayName = e.target.username.value;
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+        const cpassword = e.target.cpassword.value;
+        const file = e.target.avatar.files[0];
 
         try {
-            const response = await createUserWithEmailAndPassword(auth, email, password)
-
-            const storageRef = ref(storage, displayName);
-
-            await uploadBytesResumable(storageRef, file).then(() => {
-                getDownloadURL(storageRef).then(async (downloadURL) => {
-                    await updateProfile(response.user, {
-                        displayName,
-                        photoURL: downloadURL
-                    });
-                    try {
-                        await setDoc(doc(db, "users", response.user.uid), {
-                            uid: response.user.uid,
-                            displayName,
-                            email,
-                            photoURL: downloadURL
-                        });
-                        await setDoc(doc(db, "userChats", response.user.uid), {});
-
-                        setTimeout(() => {
-                            navigate('/')
-                        }, 5000);
-
-                    } catch (error) {
-                        console.error("Error writing document: ", error);
-                    }
-                });
+            if (password.length < 6) {
+                throw new Error('Password must be at least 6 characters');
             }
-            );
+
+            if (password !== cpassword) {
+                throw new Error('Passwords do not match');
+            }
+
+            const response = await createUserWithEmailAndPassword(auth, email, password);
+
+            const storageRef = ref(storage, `${displayName}/${file.name}`);
+            await uploadBytesResumable(storageRef, file);
+
+            const downloadURL = await getDownloadURL(storageRef);
+
+            await updateProfile(response.user, {
+                displayName,
+                photoURL: downloadURL
+            });
+
+            await setDoc(doc(db, "users", response.user.uid), {
+                uid: response.user.uid,
+                displayName,
+                email,
+                photoURL: downloadURL
+            });
+
+            await setDoc(doc(db, "userChats", response.user.uid), {});
+
+            toast.success('Account created successfully!', {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+            });
+
+            // Redirect immediately upon success
+            navigate('/');
 
         } catch (error) {
-            console.log("Error creating account", error)
-            toast.error('Soething went wrong', {
+            console.error("Error creating account", error);
+
+            toast.error(error.message || 'Something went wrong', {
                 position: "top-center",
                 autoClose: 3000,
                 hideProgressBar: false,
@@ -104,7 +88,6 @@ const Signup = () => {
             });
         }
     };
-
     return (
         <div className='authContainer'>
             <ToastContainer
